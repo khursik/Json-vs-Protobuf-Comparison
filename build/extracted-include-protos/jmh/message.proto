@@ -1,0 +1,16 @@
+syntax = "proto3";
+
+package ru.sbt.comparison;
+option java_multiple_files = true;
+option java_package = "ru.sbt.comparison";
+//option java_outer_classname = "SimpleMessage";
+
+message Message {
+  int32 id = 1;
+  string source = 2;
+  oneof data {
+    string first_name = 3;
+    string last_name = 4;
+    string email = 5;
+  }
+}

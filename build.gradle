@@ -1,0 +1,47 @@
+plugins {
+    id 'java'
+    id 'com.google.protobuf' version '0.8.19'
+    id 'me.champeau.jmh' version '0.6.8'
+}
+
+group 'ru.sbt'
+version '1.0-SNAPSHOT'
+
+repositories {
+    mavenCentral()
+}
+
+jmh {
+    duplicateClassesStrategy = DuplicatesStrategy.WARN
+}
+
+dependencies {
+    implementation 'com.fasterxml.jackson.core:jackson-databind:2.16.0'
+    implementation 'com.google.protobuf:protobuf-java:3.25.1'
+    testImplementation 'org.junit.jupiter:junit-jupiter-api:5.8.1'
+    testRuntimeOnly 'org.junit.jupiter:junit-jupiter-engine:5.8.1'
+}
+
+sourceSets {
+    main {
+        java {
+            srcDirs 'build/generated/source/proto/main/java'
+        }
+    }
+}
+
+protobuf {
+    protoc {
+        artifact = 'com.google.protobuf:protoc:3.25.1'
+    }
+
+    generateProtoTasks {
+        all().each { task -> }
+    }
+}
+
+tasks.withType(Copy).all { duplicatesStrategy 'exclude' }
+
+test {
+    useJUnitPlatform()
+}

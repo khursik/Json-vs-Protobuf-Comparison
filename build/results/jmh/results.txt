@@ -1,0 +1,5 @@
+Benchmark                                          Mode  Cnt    Score    Error  Units
+JsonDeserializationBenchmark.deserializeToDTO      avgt   15  758.926 ± 17.576  ns/op
+JsonSerializationBenchmark.serializeFromDTO        avgt   15  440.520 ± 13.246  ns/op
+ProtobufDeserializationBenchmark.deserializeToDTO  avgt   15    7.170 ±  0.161  ns/op
+ProtobufSerializationBenchmark.serializeFromDTO    avgt   15    2.060 ±  0.033  ns/op
